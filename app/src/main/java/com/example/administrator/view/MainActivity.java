@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
 
     private static final String TOOLBAR = "ToolBar";
     private static final String ANIMATION = "View state change Animation";
+    private static final String NOTIFICATION = "notifition";
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION};
@@ -102,6 +103,16 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent2.putExtra("title",ANIMATION);
                 startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
+            case NOTIFICATION:
+                Intent intent3 = new Intent(this,NotifitionActivity.class);
+                intent3.putExtra("flag",2);
+                intent3.putExtra("title", NOTIFICATION);
+                startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+
+
+
+
         }
     }
 
