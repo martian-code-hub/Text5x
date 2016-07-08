@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Text5x</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_share">Share</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="drawer_description">description</string>
+    <string name="drawer_description_format">description_format</string>
+
+
+    <string-array name="drawer_left">
+        <item>menuone</item>
+        <item>menuotwo</item>
+        <item>menuothree</item>
+        <item>menufour</item>
+    </string-array>
+
+
+</resources>
