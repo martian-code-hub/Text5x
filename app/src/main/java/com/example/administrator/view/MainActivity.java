@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
 
     private static final String TOOLBAR = "ToolBar";
     private static final String ANIMATION = "View state change Animation";
-    private static final String NOTIFICATION = "notifition";
+    private static final String NOTIFICATION = "Notifition";
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION};
     private HomeAdapter mAdapter;
 
     @Override
