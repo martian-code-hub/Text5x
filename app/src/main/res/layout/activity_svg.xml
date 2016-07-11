@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:navigationIcon="?attr/homeAsUpIndicator">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/activity_animation_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/myvector_one"
+        android:layout_below="@id/activity_animation_button_one"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/activity_animation_iv_two"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:onClick="click"
+        android:layout_centerHorizontal="true"
+        android:src="@anim/path_animated_vector"
+        android:layout_below="@id/activity_animation_iv"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+
+    <ImageView
+        android:id="@+id/activity_animation_iv_three"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:onClick="click"
+        android:layout_centerHorizontal="true"
+        android:src="@anim/search_animated_vector"
+        android:layout_below="@id/activity_animation_iv_two"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>
+</ScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String TOOLBAR = "ToolBar";
     private static final String ANIMATION = "View state change Animation";
     private static final String NOTIFICATION = "Notifition";
+    private static final String SVG = "SVG";
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG};
     private HomeAdapter mAdapter;
 
     @Override
@@ -109,7 +110,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent3.putExtra("title", NOTIFICATION);
                 startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
-
+            case SVG:
+                Intent intent4 = new Intent(this,SVGActivity.class);
+                intent4.putExtra("flag",2);
+                intent4.putExtra("title", SVG);
+                startActivity(intent4, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
 
 
 
