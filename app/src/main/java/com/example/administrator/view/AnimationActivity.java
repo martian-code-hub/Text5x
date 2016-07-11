@@ -13,11 +13,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.example.administrator.fragment.DrawerContentFragment;
 import com.example.administrator.fragment.DrawerLeftFragment;
 import com.example.administrator.text5x.R;
+import com.example.administrator.util.CameraAnimation;
+import com.example.administrator.util.TvAnimation;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -36,7 +44,8 @@ public class AnimationActivity extends AppCompatActivity {
     private String mTitle;
 
     private Toolbar toolbar;
-
+    private ImageView imageView;
+    private TextView textView;
 
 
     @Override
@@ -85,9 +94,34 @@ public class AnimationActivity extends AppCompatActivity {
                 return false;
             }
         });
+        imageView = (ImageView) findViewById(R.id.activity_animation_iv);
+        textView = (TextView) findViewById(R.id.activity_animation_tv);
+
+
     }
 
+    public void click(View view)
+    {
+        switch (view.getId()){
+            case R.id.activity_animation_button_one:
+                Animation animation_tv = new TvAnimation();
+                animation_tv.setDuration(500);
+                animation_tv.setFillAfter(true);
+                animation_tv.setInterpolator(new AccelerateDecelerateInterpolator());
+                imageView.startAnimation(animation_tv);
+                break;
+            case R.id.activity_animation_button_two:
+                Animation animation_camera = new CameraAnimation();
+                animation_camera.setDuration(2000);
+                animation_camera.setFillAfter(true);
+                animation_camera.setInterpolator(new AccelerateDecelerateInterpolator());
+                textView.startAnimation(animation_camera);
+                break;
 
+
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
