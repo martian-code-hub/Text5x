@@ -59,6 +59,16 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"/>
 
+    <ImageView
+        android:id="@+id/activity_animation_iv_four"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/activity_animation_iv_three"
+        android:src="@drawable/shadow"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
 </RelativeLayout>
 </ScrollView>
 
