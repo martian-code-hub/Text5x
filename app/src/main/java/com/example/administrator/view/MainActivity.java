@@ -37,9 +37,10 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String NOTIFICATION = "Notifition";
     private static final String SVG = "SVG";
     private static final String SURFACEVIEW = "SurfaceView";
+    private static final String VIEWDRAGHELPER = "ViewDragHelper";
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER};
     private HomeAdapter mAdapter;
 
     @Override
@@ -123,7 +124,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent5.putExtra("title", SURFACEVIEW);
                 startActivity(intent5, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
-
+            case VIEWDRAGHELPER:
+                Intent intent6 = new Intent(this,ViewDragHelperActivity.class);
+                intent6.putExtra("flag",1);
+                intent6.putExtra("title", VIEWDRAGHELPER);
+                startActivity(intent6, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
 
         }
     }
