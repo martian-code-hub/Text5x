@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Text5x.iml" filepath="$PROJECT_DIR$/Text5x.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javatext/javatext.iml" filepath="$PROJECT_DIR$/javatext/javatext.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/activity_rxjava_bt_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMothed"
+            android:text="Create Observer"
+             android:layout_marginTop="10dp"
+            android:background="?android:attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/activity_rxjava_bt_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMothed"
+            android:text="CreateObservabler"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/activity_rxjava_bt_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMothed"
+            android:text="subscribe"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/activity_rxjava_bt_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMothed"
+            android:text="test"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <Button
+            android:id="@+id/activity_rxjava_bt_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMothed"
+            android:text="scheduler"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/selectableItemBackground"/>
+        <Button
+            android:id="@+id/activity_rxjava_bt_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMothed"
+            android:text="map"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <ImageView
+            android:id="@+id/activity_rxjava_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>
