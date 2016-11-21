@@ -10,4 +10,7 @@ interface PersonManager {
 
   void addPerson(inout Person person);
 
+  void updatePerson(inout Person person,int index);
+
+   boolean disConnected();
 }

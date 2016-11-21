@@ -93,4 +93,9 @@ public class Person implements Parcelable {
         age = parcel.readString();
         sex = parcel.readString();
     }
+
+    @Override
+    public String toString() {
+        return "name:"+this.getName()+" age:"+this.getAge()+" sex:"+this.getSex();
+    }
 }

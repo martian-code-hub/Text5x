@@ -48,10 +48,11 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String RXJAVA = "RxJava";
     private static final String BAR = "Bar";
     private static final String ARITHMETIC = "Arithmetic";
+    private static final String AIDL = "Aidl";
 
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL};
     private HomeAdapter mAdapter;
 
     @Override
@@ -179,6 +180,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.setClass(this,ArithmeticActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("title", ARITHMETIC);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case AIDL:
+                intent.setClass(this,AidlActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", AIDL);
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
 

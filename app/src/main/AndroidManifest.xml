@@ -30,6 +30,8 @@
         <activity android:name="com.example.martian.view.RxJavaActivity"></activity>
         <activity android:name="com.example.martian.view.BarActivity"></activity>
         <activity android:name="com.example.martian.view.ArithmeticActivity"></activity>
+        <activity android:name="com.example.martian.view.AidlActivity"></activity>
+
 
 
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
