@@ -22,7 +22,7 @@
 
 
 
-            <com.example.administrator.util.DragViewGroup
+            <com.example.martian.util.DragViewGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -46,6 +46,6 @@
                         android:text="内容"/>
                 </RelativeLayout>
 
-            </com.example.administrator.util.DragViewGroup>
+            </com.example.martian.util.DragViewGroup>
 
 </android.support.design.widget.CoordinatorLayout>

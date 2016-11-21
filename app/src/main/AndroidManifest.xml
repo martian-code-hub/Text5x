@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.administrator.text5x">
+    package="com.example.martian">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.administrator.view.MainActivity"
+            android:name="com.example.martian.view.MainActivity"
             android:launchMode="singleTask"
             >
             <intent-filter>
@@ -20,17 +20,17 @@
         </activity>
 
         <activity
-            android:name="com.example.administrator.view.ToolBarActivity"
+            android:name="com.example.martian.view.ToolBarActivity"
             >
         </activity>
 
         <activity
-            android:name="com.example.administrator.view.AnimationActivity"
+            android:name="com.example.martian.view.AnimationActivity"
             >
         </activity>
 
         <activity
-            android:name="com.example.administrator.view.NotifitionActivity"
+            android:name="com.example.martian.view.NotifitionActivity"
             >
         </activity>
 
