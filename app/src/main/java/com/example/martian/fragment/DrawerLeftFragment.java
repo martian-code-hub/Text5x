@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.martian.adapter.HomeAdapter;
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 import java.util.Arrays;
 import java.util.List;

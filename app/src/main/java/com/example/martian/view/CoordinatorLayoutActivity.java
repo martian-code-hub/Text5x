@@ -17,7 +17,7 @@ import android.view.WindowManager;
 
 import com.example.martian.adapter.TabItemAdapter;
 import com.example.martian.fragment.TabItemFragment;
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 import java.util.ArrayList;
 

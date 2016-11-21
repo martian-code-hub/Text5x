@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 /**
  * A fragment with a Google +1 button.

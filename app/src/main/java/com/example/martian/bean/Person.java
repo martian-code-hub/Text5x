@@ -64,22 +64,33 @@ public class Person implements Parcelable {
     public Person() {
     }
 
-    protected Person(Parcel parcel) {
+    public Person(Parcel parcel) {
         this.roles = parcel.createStringArrayList();
         this.name = parcel.readString();
         this.age = parcel.readString();
         this.sex = parcel.readString();
     }
 
-    public static final Creator<Person> create = new Creator<Person>() {
+    public static final Creator<Person> CREATOR = new Creator<Person>() {
         @Override
-        public Person createFromParcel(Parcel source) {
-            return new Person(source);
+        public Person createFromParcel(Parcel in) {
+            return new Person(in);
         }
 
         @Override
         public Person[] newArray(int size) {
-            return new Person[0];
+            return new Person[size];
         }
     };
+
+    /**
+     * 参数是一个Parcel,用它来存储与传输数据
+     * @param parcel
+     */
+    public void readFromParcel(Parcel parcel){
+        roles = parcel.createStringArrayList();
+        name = parcel.readString();
+        age = parcel.readString();
+        sex = parcel.readString();
+    }
 }

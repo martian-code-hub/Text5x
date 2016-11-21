@@ -10,8 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.martian.view.MainActivity"
-            android:launchMode="singleTask"
-            >
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,20 +18,18 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.example.martian.view.ToolBarActivity"
-            >
-        </activity>
-
-        <activity
-            android:name="com.example.martian.view.AnimationActivity"
-            >
-        </activity>
-
-        <activity
-            android:name="com.example.martian.view.NotifitionActivity"
-            >
-        </activity>
+        <activity android:name="com.example.martian.view.ToolBarActivity"></activity>
+        <activity android:name="com.example.martian.view.AnimationActivity"></activity>
+        <activity android:name="com.example.martian.view.NotifitionActivity"></activity>
+        <activity android:name="com.example.martian.view.SVGActivity"></activity>
+        <activity android:name="com.example.martian.view.SurfaceViewActivity"></activity>
+        <activity android:name="com.example.martian.view.ViewDragHelperActivity"></activity>
+        <activity android:name="com.example.martian.view.CoordinatorLayoutActivity"></activity>
+        <activity android:name="com.example.martian.view.RetrofitActivity"></activity>
+        <activity android:name="com.example.martian.view.GlideActivity"></activity>
+        <activity android:name="com.example.martian.view.RxJavaActivity"></activity>
+        <activity android:name="com.example.martian.view.BarActivity"></activity>
+        <activity android:name="com.example.martian.view.ArithmeticActivity"></activity>
 
 
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for

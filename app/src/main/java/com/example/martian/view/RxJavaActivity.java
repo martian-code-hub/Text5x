@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.martian.bean.Person;
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 import com.jakewharton.rxbinding.view.RxView;
 import com.orhanobut.logger.Logger;
 

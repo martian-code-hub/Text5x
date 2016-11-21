@@ -7,7 +7,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.Toolbar;
 
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 
 /**

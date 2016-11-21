@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 import java.util.List;
 

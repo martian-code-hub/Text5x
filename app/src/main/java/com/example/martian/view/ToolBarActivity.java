@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.martian.fragment.DrawerContentFragment;
 import com.example.martian.fragment.DrawerLeftFragment;
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 

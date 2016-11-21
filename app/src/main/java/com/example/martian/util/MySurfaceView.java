@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 /**
  * Created by Administrator on 2016/7/18.

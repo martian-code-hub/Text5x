@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.martian.bean.Node;
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 
 import java.util.LinkedList;
 

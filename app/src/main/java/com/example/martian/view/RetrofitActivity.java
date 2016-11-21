@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.martian.bean.News;
 import com.example.martian.bean.NewsList;
 import com.example.martian.data.RetrofitService;
-import com.example.martian.text5x.R;
+import com.example.martian.R;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
