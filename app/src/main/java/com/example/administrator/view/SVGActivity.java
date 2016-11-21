@@ -1,40 +1,31 @@
 package com.example.administrator.view;
 
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
-import com.example.administrator.fragment.DrawerContentFragment;
-import com.example.administrator.fragment.DrawerLeftFragment;
 import com.example.administrator.text5x.R;
 import com.example.administrator.util.CameraAnimation;
 import com.example.administrator.util.TvAnimation;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/7/6.
  */
-public class AnimationActivity extends AppCompatActivity {
+public class SVGActivity extends AppCompatActivity {
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -45,7 +36,8 @@ public class AnimationActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ImageView imageView;
-    private TextView textView;
+    private ImageView iv;
+    private ImageView iv_search;
 
 
     @Override
@@ -66,7 +58,7 @@ public class AnimationActivity extends AppCompatActivity {
                 break;
         }
 
-        setContentView(R.layout.activity_animation);
+        setContentView(R.layout.activity_svg);
         iniView();
     }
 
@@ -95,7 +87,8 @@ public class AnimationActivity extends AppCompatActivity {
             }
         });
         imageView = (ImageView) findViewById(R.id.activity_animation_iv);
-        textView = (TextView) findViewById(R.id.activity_animation_tv);
+        iv = (ImageView) findViewById(R.id.activity_animation_iv_two);
+        iv_search = (ImageView) findViewById(R.id.activity_animation_iv_three);
 
 
     }
@@ -103,19 +96,17 @@ public class AnimationActivity extends AppCompatActivity {
     public void click(View view)
     {
         switch (view.getId()){
-            case R.id.activity_animation_button_one:
-                Animation animation_tv = new TvAnimation();
-                animation_tv.setDuration(500);
-                animation_tv.setFillAfter(true);
-                animation_tv.setInterpolator(new AccelerateDecelerateInterpolator());
-                imageView.startAnimation(animation_tv);
+            case R.id.activity_animation_iv_two:
+                Drawable drawable = iv.getDrawable();
+                if(drawable instanceof Animatable){
+                    ((Animatable) drawable).start();
+                }
                 break;
-            case R.id.activity_animation_button_two:
-                Animation animation_camera = new CameraAnimation();
-                animation_camera.setDuration(2000);
-                animation_camera.setFillAfter(true);
-                animation_camera.setInterpolator(new AccelerateDecelerateInterpolator());
-                textView.startAnimation(animation_camera);
+            case R.id.activity_animation_iv_three:
+                Drawable drawable_search = iv_search.getDrawable();
+                if(drawable_search instanceof Animatable){
+                    ((Animatable) drawable_search).start();
+                }
                 break;
 
 

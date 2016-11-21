@@ -28,43 +28,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/activity_animation_button_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:onClick="click"
-        android:padding="10dp"
-        android:text="动画1"/>
-    <Button
-        android:id="@+id/activity_animation_button_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/activity_animation_button_one"
-        android:layout_margin="5dp"
-        android:onClick="click"
-        android:padding="10dp"
-        android:text="动画2"/>
-
-    <ImageView
+    <com.example.administrator.util.MySurfaceView
         android:id="@+id/activity_animation_iv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/mycenter_icon"
-        android:layout_below="@id/activity_animation_button_one"
+        android:layout_height="200dp"
         android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/activity_animation_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
-        android:padding="10dp"
-        android:text="动画2效果"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/activity_animation_iv"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>
 </ScrollView>
