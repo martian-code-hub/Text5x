@@ -295,7 +295,7 @@ public class AidlActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (sc != null) {
+        if (isSuccessConnection&&sc != null) {
             unbindService(sc);
         }
     }

@@ -49,10 +49,11 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String BAR = "Bar";
     private static final String ARITHMETIC = "Arithmetic";
     private static final String AIDL = "Aidl";
+    private static final String NDK = "Ndk";
 
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK};
     private HomeAdapter mAdapter;
 
     @Override
@@ -186,6 +187,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.setClass(this,AidlActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", AIDL);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case NDK:
+                intent.setClass(this,NdkActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", NDK);
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
 
