@@ -50,10 +50,11 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String ARITHMETIC = "Arithmetic";
     private static final String AIDL = "Aidl";
     private static final String NDK = "Ndk";
+    private static final String EVENTBUS = "EventBus";
 
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS};
     private HomeAdapter mAdapter;
 
     @Override
@@ -193,6 +194,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.setClass(this,NdkActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", NDK);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case EVENTBUS:
+                intent.setClass(this,EventBusActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", EVENTBUS);
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                 break;
 
