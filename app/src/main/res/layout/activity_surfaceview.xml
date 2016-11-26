@@ -34,6 +34,20 @@
         android:layout_height="200dp"
         android:layout_marginTop="10dp"/>
 
+    <com.example.martian.MyView
+        android:id="@+id/myview"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+
+        app:target = "@id/activity_animation_iv"
+        >
+
+    </com.example.martian.MyView>
+
 </RelativeLayout>
 </ScrollView>
 

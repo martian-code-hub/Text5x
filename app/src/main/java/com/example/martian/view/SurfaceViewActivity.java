@@ -8,8 +8,11 @@ import android.transition.Fade;
 import android.transition.Slide;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
+import com.example.martian.MyView;
 import com.example.martian.R;
+import com.example.martian.util.MySurfaceView;
 
 /**
  * Created by Administrator on 2016/7/6.
@@ -23,6 +26,10 @@ public class SurfaceViewActivity extends AppCompatActivity {
     private String mTitle;
 
     private Toolbar toolbar;
+
+    private MySurfaceView msv;
+
+    private MyView mv ;
 
 
 
@@ -74,11 +81,20 @@ public class SurfaceViewActivity extends AppCompatActivity {
 //        });
 //        imageView = (ImageView) findViewById(R.id.activity_animation_iv);
 
+        msv = (MySurfaceView) findViewById(R.id.activity_animation_iv);
+        mv = (MyView) findViewById(R.id.myview);
+        mv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SurfaceViewActivity.this,mv.getId()+":"+msv.getId() , Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
-//    public void click(View view)
-//    {
-//        switch (view.getId()){
+    public void click(View view)
+    {
+        switch (view.getId()){
 //            case R.id.activity_animation_iv_two:
 //                Drawable drawable = iv.getDrawable();
 //                if(drawable instanceof Animatable){
@@ -92,10 +108,9 @@ public class SurfaceViewActivity extends AppCompatActivity {
 //                }
 //                break;
 
+        }
 
-//        }
-//
-//    }
+    }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        getMenuInflater().inflate(R.menu.menu_main, menu);

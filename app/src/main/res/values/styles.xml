@@ -19,4 +19,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <declare-styleable name="MyAttr">
+        <attr name="target" format="reference"></attr>
+    </declare-styleable>
+
 </resources>
