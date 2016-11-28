@@ -15,21 +15,25 @@ public class MvpPresenter implements IMvpPresenter {
         this.iMvpActivity = iMvpActivity;
         user = new User(iMvpActivity.getUserName(), iMvpActivity.getPassWord());
     }
+    public MvpPresenter(IMvpActivity iMvpActivity, User user) {
+        this.iMvpActivity = iMvpActivity;
+        this.user = user;
+    }
 
     @Override
     public void login(final String username, final String password) {
         iMvpActivity.showProgress();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                iMvpActivity.hideProgress();
-                int code = user.checkUserValidity(username, password);
-                if (code == -1) {
-                    iMvpActivity.setPassWordError();
-                } else if (code == 0) {
-                    iMvpActivity.loginSuccess();
-                }
-            }
-        }, 3000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                iMvpActivity.hideProgress();
+                    int code = user.checkUserValidity(username, password);
+//                if (code == -1) {
+//                    iMvpActivity.setPassWordError();
+//                } else if (code == 0) {
+//                    iMvpActivity.loginSuccess();
+//                }
+//            }
+//        }, 3000);
     }
 }
