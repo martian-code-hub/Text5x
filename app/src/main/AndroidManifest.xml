@@ -33,6 +33,8 @@
         <activity android:name="com.example.martian.view.AidlActivity"></activity>
         <activity android:name="com.example.martian.view.NdkActivity"></activity>
         <activity android:name="com.example.martian.view.EventBusActivity"></activity>
+        <activity android:name="com.example.martian.view.MvpActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"></activity>
 
     </application>
 

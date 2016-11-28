@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterMaxLength="8"
+            app:counterEnabled="true"
+            app:counterOverflowTextAppearance="@color/colorAccent"
+            app:counterTextAppearance="@color/colorAccent"
+            >
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_mvp_ex_1"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="60dp"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:hint="username"
+            android:padding="10dp" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_mvp_exl_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterMaxLength="8"
+            app:counterEnabled="true"
+            app:counterOverflowTextAppearance="@color/colorAccent"
+            app:counterTextAppearance="@color/colorAccent"
+            >
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_mvp_ex_2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:singleLine="true"
+            android:layout_marginTop="15dp"
+            android:imeOptions="actionDone"
+            android:hint="password"
+            android:padding="10dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/activity_mvp_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginTop="20dp"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:text="commit" />
+
+
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

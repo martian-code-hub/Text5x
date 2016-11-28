@@ -1,6 +1,5 @@
 package com.example.martian.view;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,10 +47,11 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String AIDL = "Aidl";
     private static final String NDK = "Ndk";
     private static final String EVENTBUS = "EventBus";
+    private static final String MVP = "Mvp";
 
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP};
     private HomeAdapter mAdapter;
 
     @Override
@@ -199,6 +199,15 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", EVENTBUS);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
+            case MVP:
+                intent.setClass(this,MvpActivity.class);
+                intent.putExtra("flag",0);
+                intent.putExtra("title", MVP);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+
+
+
 
 
         }
