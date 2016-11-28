@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.example.martian.MyView;
 import com.example.martian.R;
 import com.example.martian.util.MySurfaceView;
+import com.example.martian.util.MyView;
 
 /**
  * Created by Administrator on 2016/7/6.

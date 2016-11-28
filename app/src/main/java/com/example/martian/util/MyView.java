@@ -1,9 +1,13 @@
-package com.example.martian;
+package com.example.martian.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.martian.R;
 
 /**
  * Created by yangpei on 2016/11/26.
@@ -40,6 +44,7 @@ public class MyView extends View {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public MyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
