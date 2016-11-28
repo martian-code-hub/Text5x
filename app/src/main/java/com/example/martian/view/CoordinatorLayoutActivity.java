@@ -1,6 +1,7 @@
 package com.example.martian.view;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewCompat;
@@ -53,18 +54,19 @@ public class CoordinatorLayoutActivity extends AppCompatActivity implements TabI
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         int flag = getIntent().getExtras().getInt("flag");
         mTitle = getIntent().getExtras().getString("title");
-        switch (flag) {
-            case 0:
-                getWindow().setEnterTransition(new Explode());
-                break;
-            case 1:
-                getWindow().setEnterTransition(new Slide());
-                break;
-            case 2:
-                getWindow().setEnterTransition(new Fade());
-                break;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            switch (flag) {
+                case 0:
+                    getWindow().setEnterTransition(new Explode());
+                    break;
+                case 1:
+                    getWindow().setEnterTransition(new Slide());
+                    break;
+                case 2:
+                    getWindow().setEnterTransition(new Fade());
+                    break;
+            }
         }
-
         setContentView(R.layout.activity_coordinatorlayout);
         iniView();
 

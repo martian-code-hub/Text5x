@@ -1,5 +1,6 @@
 package com.example.martian.view;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,12 +15,10 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.martian.R;
 import com.example.martian.bean.News;
 import com.example.martian.bean.NewsList;
 import com.example.martian.data.RetrofitService;
-import com.example.martian.R;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -52,7 +51,6 @@ public class RetrofitActivity extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,23 +58,23 @@ public class RetrofitActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         int flag = getIntent().getExtras().getInt("flag");
         mTitle = getIntent().getExtras().getString("title");
-        switch (flag) {
-            case 0:
-                getWindow().setEnterTransition(new Explode());
-                break;
-            case 1:
-                getWindow().setEnterTransition(new Slide());
-                break;
-            case 2:
-                getWindow().setEnterTransition(new Fade());
-                break;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            switch (flag) {
+                case 0:
+                    getWindow().setEnterTransition(new Explode());
+                    break;
+                case 1:
+                    getWindow().setEnterTransition(new Slide());
+                    break;
+                case 2:
+                    getWindow().setEnterTransition(new Fade());
+                    break;
+            }
         }
-
         setContentView(R.layout.activity_retrofit);
         iniView();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
 

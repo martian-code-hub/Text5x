@@ -2,10 +2,12 @@ package com.example.martian.view;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,12 +19,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.martian.adapter.HomeAdapter;
 import com.example.martian.R;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.example.martian.adapter.HomeAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
 
     private static final String TOOLBAR = "ToolBar";
     private static final String ANIMATION = "View state change Animation";
@@ -65,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
         initData();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void iniView() {
@@ -105,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
 //        }
         mAdapter.notifyDataSetChanged();
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(MainActivity.this, mDatas.get(position), Toast.LENGTH_SHORT).show();
@@ -115,92 +112,92 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.setClass(this,ToolBarActivity.class);
                 intent.putExtra("flag",0);
                 intent.putExtra("title",TOOLBAR);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case ANIMATION:
                 intent.setClass(this,AnimationActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("title",ANIMATION);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case NOTIFICATION:
                 intent.setClass(this,NotifitionActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", NOTIFICATION);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case SVG:
                 intent.setClass(this,SVGActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", SVG);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case SURFACEVIEW:
                 intent.setClass(this,SurfaceViewActivity.class);
                 intent.putExtra("flag",0);
                 intent.putExtra("title", SURFACEVIEW);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case VIEWDRAGHELPER:
                 intent.setClass(this,ViewDragHelperActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("title", VIEWDRAGHELPER);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
 
             case COORDINATORLAYOUT:
                 intent.setClass(this,CoordinatorLayoutActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", COORDINATORLAYOUT);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case RETROFIT:
                 intent.setClass(this,RetrofitActivity.class);
                 intent.putExtra("flag",0);
                 intent.putExtra("title", RETROFIT);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case GLIDE:
                 intent.setClass(this,GlideActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("title", GLIDE);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case RXJAVA:
                 intent.setClass(this,RxJavaActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", RXJAVA);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case BAR:
                 intent.setClass(this,BarActivity.class);
                 intent.putExtra("flag",0);
                 intent.putExtra("title", BAR);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case ARITHMETIC:
                 intent.setClass(this,ArithmeticActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("title", ARITHMETIC);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case AIDL:
                 intent.setClass(this,AidlActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", AIDL);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case NDK:
                 intent.setClass(this,NdkActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", NDK);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
             case EVENTBUS:
                 intent.setClass(this,EventBusActivity.class);
                 intent.putExtra("flag",2);
                 intent.putExtra("title", EVENTBUS);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
 
 

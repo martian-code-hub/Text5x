@@ -60,16 +60,18 @@ public class BarActivity extends AppCompatActivity {
 //        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         int flag = getIntent().getExtras().getInt("flag");
         mTitle = getIntent().getExtras().getString("title");
-        switch (flag) {
-            case 0:
-                getWindow().setEnterTransition(new Explode());
-                break;
-            case 1:
-                getWindow().setEnterTransition(new Slide());
-                break;
-            case 2:
-                getWindow().setEnterTransition(new Fade());
-                break;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            switch (flag) {
+                case 0:
+                    getWindow().setEnterTransition(new Explode());
+                    break;
+                case 1:
+                    getWindow().setEnterTransition(new Slide());
+                    break;
+                case 2:
+                    getWindow().setEnterTransition(new Fade());
+                    break;
+            }
         }
         setContentView(R.layout.activity_bar);
 //        aMethod();

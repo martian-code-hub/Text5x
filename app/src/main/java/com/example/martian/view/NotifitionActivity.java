@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -43,18 +44,19 @@ public class NotifitionActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         int flag = getIntent().getExtras().getInt("flag");
         mTitle = getIntent().getExtras().getString("title");
-        switch (flag) {
-            case 0:
-                getWindow().setEnterTransition(new Explode());
-                break;
-            case 1:
-                getWindow().setEnterTransition(new Slide());
-                break;
-            case 2:
-                getWindow().setEnterTransition(new Fade());
-                break;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            switch (flag) {
+                case 0:
+                    getWindow().setEnterTransition(new Explode());
+                    break;
+                case 1:
+                    getWindow().setEnterTransition(new Slide());
+                    break;
+                case 2:
+                    getWindow().setEnterTransition(new Fade());
+                    break;
+            }
         }
-
         setContentView(R.layout.activity_notifition);
         iniView();
     }
