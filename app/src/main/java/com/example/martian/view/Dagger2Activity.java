@@ -1,13 +1,14 @@
 package com.example.martian.view;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,23 +17,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.martian.R;
-import com.example.martian.bean.News;
-import com.example.martian.bean.NewsList;
+import com.example.martian.dagger.AppComponent;
+import com.example.martian.dagger.DaggerAppComponent;
+import com.example.martian.dagger.DaggerManage;
+import com.example.martian.dagger.DaggerOkHttpClientComponent;
+import com.example.martian.dagger.DaggerPersonComponent;
+import com.example.martian.dagger.DaggerPresenter;
+import com.example.martian.dagger.IDaggerActivity;
+import com.example.martian.dagger.OkHttpClientComponent;
+import com.example.martian.dagger.OkHttpManage;
+import com.example.martian.dagger.PasswordValidator;
+import com.example.martian.dagger.Person;
+import com.example.martian.dagger.UserManager;
 import com.example.martian.data.RetrofitService;
 import com.google.gson.Gson;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 /**
  * Created by Administrator on 2016/7/6.
  */
-public class RetrofitActivity extends AppCompatActivity {
+@SuppressWarnings("unused")
+public class Dagger2Activity extends AppCompatActivity implements IDaggerActivity {
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -42,16 +56,21 @@ public class RetrofitActivity extends AppCompatActivity {
     private String mTitle;
 
     private Toolbar toolbar;
-    ;
 
-    private TextView jsonTv, contentTv;
+    private TextView tx;
 
     private static final String BASEURL = "http://news-at.zhihu.com/api/4/";
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+//    @Inject @Named("defult")
+//    DaggerPresenter daggerPresenter;
+
+
+//    @Named("time")
+//    @Inject
+//    OkHttpClient okHttpClient;
+
+    @Inject
+    Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +91,58 @@ public class RetrofitActivity extends AppCompatActivity {
                     break;
             }
         }
-        setContentView(R.layout.activity_retrofit);
+        setContentView(R.layout.activity_dagger2);
         iniView();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        iniData();
+//        iniDagger();
+//        initOkHttpClient();
+        iniPerson();
     }
 
+    private void iniPerson() {
+        DaggerPersonComponent.create().inject(this);
+        tx.setText(person.say());
+    }
+
+    private void initOkHttpClient() {
+        OkHttpClientComponent okHttpClientComponent = DaggerOkHttpClientComponent.builder().okHttpManage(new OkHttpManage()).build();
+//        okHttpClientComponent.createOkHttpClient();
+        okHttpClientComponent.inject(this);
+    }
+
+
+    /**
+     * 不用Dagger2时代码
+     */
+    private void iniData() {
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).build();
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create(new Gson())).client(okHttpClient).build();
+
+        RetrofitService retrofitSerivce = retrofit.create(RetrofitService.class);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+        UserManager userManager = new UserManager(sp, retrofitSerivce);
+
+        PasswordValidator passwordValidator = new PasswordValidator();
+
+//        DaggerPresenter    daggerPresenter = new DaggerPresenter(userManager, passwordValidator, this);
+//        daggerPresenter.getData();
+
+    }
+
+    private void iniDagger() {
+        //没有使用Inject
+        AppComponent appComponent = DaggerAppComponent.builder().daggerManage(new DaggerManage(this,30)).build();
+        appComponent.createDaggerPresenter().getData();
+
+        //使用Inject
+//        AppComponent daggerComponent = DaggerAppComponent.builder().daggerManage(new DaggerManage(this,30)).build();
+//        daggerComponent.inject(this);
+//        daggerPresenter.getData();
+    }
 
     private void iniView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar_toolbar);
@@ -101,9 +166,6 @@ public class RetrofitActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        jsonTv = (TextView) findViewById(R.id.activity_retrofit_json);
-        contentTv = (TextView) findViewById(R.id.activity_retrofit_content);
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -111,70 +173,28 @@ public class RetrofitActivity extends AppCompatActivity {
 //                createNotifition();
 //            }
 //        });
+        tx = (TextView) findViewById(R.id.activity_dagger2_tx);
+
     }
 
     public void click(View view) {
         switch (view.getId()) {
-            case R.id.activity_retrofit_get_bt:
-                getData();
-                break;
-            case R.id.activity_retrofit_post_bt:
-                postData();
-                break;
+//            case R.id.activity_mvp_bt:
+////                hideInPutSoft();
+//                mvppresenter.login(getUserName(), getPassWord());
+//                break;
         }
     }
 
-    private void getData() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
-        RetrofitService service = retrofit.create(RetrofitService.class);
-        Call<NewsList> repos = service.getLatestNews();
-//         try {
-//            Response<NewsList> data = repos.execute();
-//            jsonTv.setText(data.toString());
-//            contentTv.setText(data.body() + data.message());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        repos.enqueue(new Callback<NewsList>() {
-            public void onResponse(Call<NewsList> call, final Response<NewsList> response) {
-                Toast.makeText(RetrofitActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        jsonTv.setText(response.toString());
-                        contentTv.setText(data(response.body()));
-                    }
-                });
-
-            }
-
-            @Override
-            public void onFailure(Call<NewsList> call, Throwable t) {
-                Toast.makeText(RetrofitActivity.this, "failure" + t.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                Log.d("---", t.getMessage().toString());
-            }
-        });
+    @Override
+    public void getSuccess(String data) {
+        tx.setText(data);
+        Toast.makeText(this, "获取数据成功", Toast.LENGTH_SHORT).show();
     }
 
-    private void postData() {
-//       StringBuilder sb = new StringBuilder();
-//        sb.
-    }
-
-    private String data(NewsList data) {
-        if (data != null) {
-            if (data.getStories() != null) {
-                List<News> stories = data.getStories();
-                StringBuffer sb = new StringBuffer();
-                for (News news : stories) {
-                    sb.append(news.getId()).append("  ").append(news.getType()).append("   ").append(news.getTitle()).append("\n");
-                }
-                return sb.toString();
-            }
-        }
-        return "";
+    @Override
+    public void getFailure() {
+        tx.setText("获取数据失败！");
     }
 
     @Override

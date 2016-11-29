@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.martian">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,6 +37,7 @@
         <activity android:name="com.example.martian.view.EventBusActivity"></activity>
         <activity android:name="com.example.martian.view.MvpActivity"
             android:windowSoftInputMode="adjustPan|stateAlwaysVisible"></activity>
+        <activity android:name="com.example.martian.view.Dagger2Activity"></activity>
 
     </application>
 

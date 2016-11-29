@@ -48,10 +48,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String NDK = "Ndk";
     private static final String EVENTBUS = "EventBus";
     private static final String MVP = "Mvp";
+    private static final String DAGGER2 = "Dagger2";
 
 
     private List<String> mDatas;
-    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP};
+    private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
+            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2};
     private HomeAdapter mAdapter;
 
     @Override
@@ -205,11 +207,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", MVP);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
-
-
-
-
-
+            case DAGGER2:
+                intent.setClass(this,Dagger2Activity.class);
+                intent.putExtra("flag",0);
+                intent.putExtra("title", DAGGER2);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
         }
     }
 
