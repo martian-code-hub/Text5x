@@ -25,7 +25,10 @@ import com.example.martian.util.NetUtil;
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +51,7 @@ public class RetrofitActivity extends AppCompatActivity {
     private Toolbar toolbar;
     ;
 
-    private TextView jsonTv, contentTv,httpTx;
+    private TextView jsonTv, contentTv, httpTx;
 
     private static final String BASEURL = "http://news-at.zhihu.com/api/4/";
 
@@ -146,7 +149,6 @@ public class RetrofitActivity extends AppCompatActivity {
     }
 
 
-
     private void getData() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
@@ -189,12 +191,12 @@ public class RetrofitActivity extends AppCompatActivity {
     /**
      * HttpURLConnection  get
      */
-    private void getHttpConnection(){
+    private void getHttpConnection() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-               String data =  NetUtil.get(URL);
-                Logger.d("getHttpConnection---data:"+data);
+                String data = NetUtil.get(URL);
+                Logger.d("getHttpConnection---data:" + data);
                 Message msg = myHandler.obtainMessage();
                 msg.obj = data;
                 myHandler.sendMessage(msg);
@@ -202,6 +204,7 @@ public class RetrofitActivity extends AppCompatActivity {
         }).start();
 
     }
+
     /**
      * HttpURLConnection  post
      */
@@ -209,7 +212,7 @@ public class RetrofitActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String data =  NetUtil.post(URL,"");
+                String data = NetUtil.post(URL, "");
                 Message msg = myHandler.obtainMessage();
                 msg.obj = data;
                 myHandler.sendMessage(msg);
@@ -228,18 +231,20 @@ public class RetrofitActivity extends AppCompatActivity {
                 return sb.toString();
             }
         }
+
         return "";
     }
 
 
-    private class  MyHandler  extends Handler{
+    private class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            Logger.d("handleMessage---msg:"+msg.obj);
+            Logger.d("handleMessage---msg:" + msg.obj);
             httpTx.setText(msg.obj.toString());
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
