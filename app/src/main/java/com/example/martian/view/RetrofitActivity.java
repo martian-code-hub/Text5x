@@ -2,6 +2,8 @@ package com.example.martian.view;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
@@ -19,7 +21,9 @@ import com.example.martian.R;
 import com.example.martian.bean.News;
 import com.example.martian.bean.NewsList;
 import com.example.martian.data.RetrofitService;
+import com.example.martian.util.NetUtil;
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -44,9 +48,17 @@ public class RetrofitActivity extends AppCompatActivity {
     private Toolbar toolbar;
     ;
 
-    private TextView jsonTv, contentTv;
+    private TextView jsonTv, contentTv,httpTx;
 
     private static final String BASEURL = "http://news-at.zhihu.com/api/4/";
+
+    private static final String URL = "http://news-at.zhihu.com/api/4/stories/latest";
+
+
+//    private static final int GET = 0;
+//    private static final int POST = 1;
+
+    private MyHandler myHandler = new MyHandler();
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -111,6 +123,8 @@ public class RetrofitActivity extends AppCompatActivity {
 //                createNotifition();
 //            }
 //        });
+        httpTx = (TextView) findViewById(R.id.activity_retrofit_http_tx);
+
     }
 
     public void click(View view) {
@@ -121,8 +135,17 @@ public class RetrofitActivity extends AppCompatActivity {
             case R.id.activity_retrofit_post_bt:
                 postData();
                 break;
+
+            case R.id.activity_retrofit_http_get_bt:
+                getHttpConnection();
+                break;
+            case R.id.activity_retrofit_http_post_bt:
+                postHttpConnection();
+                break;
         }
     }
+
+
 
     private void getData() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -163,6 +186,37 @@ public class RetrofitActivity extends AppCompatActivity {
 //        sb.
     }
 
+    /**
+     * HttpURLConnection  get
+     */
+    private void getHttpConnection(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+               String data =  NetUtil.get(URL);
+                Logger.d("getHttpConnection---data:"+data);
+                Message msg = myHandler.obtainMessage();
+                msg.obj = data;
+                myHandler.sendMessage(msg);
+            }
+        }).start();
+
+    }
+    /**
+     * HttpURLConnection  post
+     */
+    private void postHttpConnection() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String data =  NetUtil.post(URL,"");
+                Message msg = myHandler.obtainMessage();
+                msg.obj = data;
+                myHandler.sendMessage(msg);
+            }
+        }).start();
+    }
+
     private String data(NewsList data) {
         if (data != null) {
             if (data.getStories() != null) {
@@ -177,6 +231,15 @@ public class RetrofitActivity extends AppCompatActivity {
         return "";
     }
 
+
+    private class  MyHandler  extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Logger.d("handleMessage---msg:"+msg.obj);
+            httpTx.setText(msg.obj.toString());
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

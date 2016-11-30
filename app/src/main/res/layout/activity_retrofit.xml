@@ -46,6 +46,25 @@
             android:padding="10dp"
             android:text="post" />
 
+        <Button
+            android:id="@+id/activity_retrofit_http_get_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="httpurlconnection(get)" />
+        <Button
+            android:id="@+id/activity_retrofit_http_post_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="httpurlconnection(post)" />
+
         <TextView
             android:id="@+id/activity_retrofit_json"
             android:layout_width="match_parent"
@@ -54,6 +73,12 @@
              />
         <TextView
             android:id="@+id/activity_retrofit_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            />
+        <TextView
+            android:id="@+id/activity_retrofit_http_tx"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
