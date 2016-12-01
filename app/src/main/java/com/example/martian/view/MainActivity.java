@@ -49,11 +49,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String EVENTBUS = "EventBus";
     private static final String MVP = "Mvp";
     private static final String DAGGER2 = "Dagger2";
+    private static final String VOLLEY = "Volley";
 
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
-            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2};
+            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY};
     private HomeAdapter mAdapter;
 
     @Override
@@ -213,6 +214,15 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", DAGGER2);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
+            case VOLLEY:
+                intent.setClass(this,VolleyActivity.class);
+                intent.putExtra("flag",1);
+                intent.putExtra("title", VOLLEY);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+
+
+
         }
     }
 

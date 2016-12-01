@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/activity_volley_tx_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+            >
+        <Button
+            android:id="@+id/activity_volley_bt_1"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="click"
+            android:text="StringRequest"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/activity_volley_bt_2"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="click"
+            android:text="JsonObjectRequest"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp" />
+        <Button
+            android:id="@+id/activity_volley_bt_3"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="click"
+            android:text="JsonArrayRequest"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp" />
+
+
+       <ImageView android:id="@+id/activity_volley_iv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"/>
+        <Button
+            android:id="@+id/activity_volley_bt_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginTop="10dp"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:text="ImageRequest" />
+
+        <ImageView android:id="@+id/activity_volley_iv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/activity_volley_bt_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginTop="10dp"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:text="ImageLoader" />
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/activity_volley_niv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/activity_volley_tx_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="自定义Request\nGsonRequest\nXMLRequest"/>
+
+        <Button
+            android:id="@+id/activity_volley_bt_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginTop="10dp"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:text="GsonRequest" />
+
+        <Button
+            android:id="@+id/activity_volley_bt_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginTop="10dp"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:text="XMLRequest" />
+
+
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

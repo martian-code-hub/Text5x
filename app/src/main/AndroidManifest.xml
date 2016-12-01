@@ -38,7 +38,7 @@
         <activity android:name="com.example.martian.view.MvpActivity"
             android:windowSoftInputMode="adjustPan|stateAlwaysVisible"></activity>
         <activity android:name="com.example.martian.view.Dagger2Activity"></activity>
-
+        <activity android:name="com.example.martian.view.VolleyActivity"></activity>
     </application>
 
 </manifest>
