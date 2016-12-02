@@ -39,6 +39,7 @@
             android:windowSoftInputMode="adjustPan|stateAlwaysVisible"></activity>
         <activity android:name="com.example.martian.view.Dagger2Activity"></activity>
         <activity android:name="com.example.martian.view.VolleyActivity"></activity>
+        <activity android:name="com.example.martian.view.OkHttpActivity"></activity>
     </application>
 
 </manifest>

@@ -50,11 +50,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String MVP = "Mvp";
     private static final String DAGGER2 = "Dagger2";
     private static final String VOLLEY = "Volley";
+    private static final String OKHTTP = "OkHttp";
 
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
-            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY};
+            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP};
     private HomeAdapter mAdapter;
 
     @Override
@@ -220,7 +221,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", VOLLEY);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
-
+            case OKHTTP:
+                intent.setClass(this,OkHttpActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", OKHTTP);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
 
 
         }
