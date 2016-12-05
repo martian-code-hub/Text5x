@@ -21,15 +21,21 @@ import com.example.martian.R;
 import com.example.martian.bean.News;
 import com.example.martian.bean.NewsList;
 import com.example.martian.data.RetrofitService;
+import com.example.martian.retrofit.RetrofitManager;
 import com.example.martian.util.NetUtil;
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,7 +59,7 @@ public class RetrofitActivity extends AppCompatActivity {
 
     private TextView jsonTv, contentTv, httpTx;
 
-    private static final String BASEURL = "http://news-at.zhihu.com/api/4/";
+
 
     private static final String URL = "http://news-at.zhihu.com/api/4/stories/latest";
 
@@ -133,11 +139,17 @@ public class RetrofitActivity extends AppCompatActivity {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.activity_retrofit_get_bt:
-                getData();
+                executeData();
                 break;
             case R.id.activity_retrofit_post_bt:
-                postData();
+                enqueueData();
                 break;
+
+            case R.id.activity_retrofit_upload_bt:
+                upload();
+                break;
+
+
 
             case R.id.activity_retrofit_http_get_bt:
                 getHttpConnection();
@@ -148,21 +160,26 @@ public class RetrofitActivity extends AppCompatActivity {
         }
     }
 
-
-    private void getData() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create(new Gson())).build();
-        RetrofitService service = retrofit.create(RetrofitService.class);
-        Call<NewsList> repos = service.getLatestNews();
-//         try {
-//            Response<NewsList> data = repos.execute();
-//            jsonTv.setText(data.toString());
-//            contentTv.setText(data.body() + data.message());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
+    /**
+     * 同步请求
+     */
+    private void executeData() {
+        Call<NewsList> repos = RetrofitManager.getService().getLatestNews();
+         try {
+            Response<NewsList> data = repos.execute();
+            jsonTv.setText(data.toString());
+            contentTv.setText(data.body() + data.message());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 异步请求
+     */
+    private void enqueueData() {
+        Call<NewsList> repos = RetrofitManager.getService().getLatestNews();
         repos.enqueue(new Callback<NewsList>() {
+            @Override
             public void onResponse(Call<NewsList> call, final Response<NewsList> response) {
                 Toast.makeText(RetrofitActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
                 runOnUiThread(new Runnable() {
@@ -172,7 +189,6 @@ public class RetrofitActivity extends AppCompatActivity {
                         contentTv.setText(data(response.body()));
                     }
                 });
-
             }
 
             @Override
@@ -183,9 +199,37 @@ public class RetrofitActivity extends AppCompatActivity {
         });
     }
 
-    private void postData() {
-//       StringBuilder sb = new StringBuilder();
-//        sb.
+    /**
+     * 上传文件(例子)
+     @Part和@PartMap是配合@Multipart使用的，使用@PartMap参数类型必须是Map，key就相当于partName,
+     value所接受的参数类型跟@Part一样，但建议不要是MultipartBody.Part(因为MultipartBody.Part本身已经包含partName)，
+     以下是@Part接受不同参数时的情况：
+    1.当方法里传参类型是MultipartBody.Part时，不要这样(@Part("partName") MultipartBody.Part part申明，partName会被忽略，
+     因为在构建MultipartBody.Part时，已经包含了part的name在里面；
+
+    2.当方法里传参类型是RequestBody时，会把RequestBody的ContentType的值加到body里面去，
+     比如像上面例子这样申明Call<String> uploadPicture(@Part("access_token") RequestBody token);
+     那么调用该方法uploadPicture(RequestBody.create(MediaType.parse("multipart/form-data"), "tokenValue"))
+     时插入body里面的内容是这样的:
+
+    --d1547544-7ffb-4ebd-913e-8cb21d2ea8f9
+    Content-Disposition: form-data; name="access_token"
+    Content-Transfer-Encoding: binary
+    Content-Type: multipart/form-data; charset=utf-8
+    Content-Length: 32
+    2.00tJ6X3GiGSdcC5f7433b5a40iAPJA
+    --d1547544-7ffb-4ebd-913e-8cb21d2ea8f9--
+    3.当方法里传参类型是其他对象类型时，将会通过实例化Retrofit时指定的conveter(下文会解释这是什么)来转换成RequestBody，
+     然后跟上面第二点所述处理;
+     */
+    private void upload() {
+        String s = "picture.png";
+        RequestBody requestFile = RequestBody.create(MediaType.parse("application/otcet-stream"), new File(s));
+
+        MultipartBody.Part body = MultipartBody.Part.createFormData("pic", "share.png", requestFile);
+
+        RetrofitManager.getService().uploadPicture(RequestBody.create(MediaType.parse("multipart/form-data"), "tokenValue"), body);
+
     }
 
     /**

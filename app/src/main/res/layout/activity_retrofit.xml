@@ -34,7 +34,7 @@
             android:onClick="click"
             android:gravity="center"
             android:padding="10dp"
-            android:text="get" />
+            android:text="execute" />
 
         <Button
             android:id="@+id/activity_retrofit_post_bt"
@@ -44,7 +44,17 @@
             android:onClick="click"
             android:gravity="center"
             android:padding="10dp"
-            android:text="post" />
+            android:text="enqueue" />
+
+        <Button
+            android:id="@+id/activity_retrofit_upload_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="click"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="upload" />
 
         <Button
             android:id="@+id/activity_retrofit_http_get_bt"
