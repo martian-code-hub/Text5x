@@ -1,6 +1,5 @@
 package com.example.martian.view;
 
-import android.net.Proxy;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.martian.R;
 import com.example.martian.bean.NewsList;
@@ -23,15 +21,11 @@ import com.example.martian.bean.Person;
 import com.example.martian.okhttp.MyInterceptors;
 import com.example.martian.util.Util;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.Call;
@@ -47,8 +41,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.Route;
 import okio.BufferedSink;
-import retrofit2.http.Header;
-import retrofit2.http.Multipart;
 
 
 /**

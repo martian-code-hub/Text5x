@@ -27,5 +27,6 @@
         <item>33</item>
         <item>66</item>
     </integer-array>
+    <string name="title_activity_my_view_group">MyViewGroup</string>
 
 </resources>
