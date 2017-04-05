@@ -2,10 +2,14 @@ package com.example.martian.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 
+import com.example.martian.BuildConfig;
 import com.example.martian.util.CrashHandler;
 import com.orhanobut.logger.LogLevel;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 
 /**
@@ -15,6 +19,8 @@ import com.orhanobut.logger.LogLevel;
 public class MyApplication extends Application implements Application.ActivityLifecycleCallbacks{
 
     private static final String TAG = "---";
+
+    private RefWatcher refWatcher;
 
     @Override
     public void onCreate() {
@@ -29,6 +35,22 @@ public class MyApplication extends Application implements Application.ActivityLi
         crashHandler.init(getApplicationContext());
         //注册监听activity的生命周期
         registerActivityLifecycleCallbacks(this);
+
+//       iniRefWatcher();
+
+    }
+
+    /**
+     * 初始化leakcanary
+     */
+    private void iniRefWatcher() {
+       refWatcher = (BuildConfig.DEBUG)? LeakCanary.install(this):RefWatcher.DISABLED;
+    }
+
+
+    public static RefWatcher getRefWatcher(Context context){
+        MyApplication application = (MyApplication) context.getApplicationContext();
+        return application.refWatcher;
     }
 
 
