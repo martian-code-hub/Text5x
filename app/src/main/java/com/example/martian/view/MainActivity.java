@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity implements HomeAdapter.OnItemClickListener {
 
     /**
@@ -51,11 +52,14 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String DAGGER2 = "Dagger2";
     private static final String VOLLEY = "Volley";
     private static final String OKHTTP = "OkHttp";
+    private static final String LEAKCANARY = "LeakCanary";
+    private static final String NESTRECYCLEVIEW = "NestRecycleView";
+    private static final String MYVIEWGROUP = "MyViewGroup";
 
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
-            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP};
+            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP,LEAKCANARY,NESTRECYCLEVIEW,MYVIEWGROUP};
     private HomeAdapter mAdapter;
 
     @Override
@@ -67,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
     }
-
     private void iniView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -227,6 +230,26 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", OKHTTP);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
+
+            case LEAKCANARY:
+                intent.setClass(this,LeakCanaryActivity.class);
+                intent.putExtra("flag",0);
+                intent.putExtra("title", LEAKCANARY);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case NESTRECYCLEVIEW:
+                intent.setClass(this,NestRecycleViewActivity.class);
+                intent.putExtra("flag",1);
+                intent.putExtra("title", NESTRECYCLEVIEW);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case MYVIEWGROUP:
+                intent.setClass(this,MyViewGroupActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", MYVIEWGROUP);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+
 
 
         }
