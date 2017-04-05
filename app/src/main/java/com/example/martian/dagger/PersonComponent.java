@@ -7,7 +7,7 @@ import dagger.Component;
 /**
  * Created by yangpei on 2016/11/29.
  */
-@Component
+@Component(modules = {DaggerManage.class})
 public interface PersonComponent {
     void inject(Dagger2Activity dagger2Activity);
 }
