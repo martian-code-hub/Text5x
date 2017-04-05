@@ -306,5 +306,4 @@ public class RetrofitActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
 }

@@ -3,8 +3,11 @@ package com.example.martian.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,8 +26,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.martian.R;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.jakewharton.rxbinding.view.RxView;
 
+import java.lang.ref.WeakReference;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -49,7 +57,12 @@ public class BarActivity extends AppCompatActivity {
     private ImageView iv;
     private Observable observable;
     private Observer observer;
-    private  int color ;
+    private int color;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
@@ -78,6 +91,9 @@ public class BarActivity extends AppCompatActivity {
 //        setT();
         iniView();
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
 
@@ -111,6 +127,10 @@ public class BarActivity extends AppCompatActivity {
 
             }
         });
+
+        MyAsyncTask myAsyncTask = new MyAsyncTask(this);
+        myAsyncTask.execute("");
+
     }
 
     public void clickMothed(View view) {
@@ -118,7 +138,7 @@ public class BarActivity extends AppCompatActivity {
     }
 
 
-    private void setT(){
+    private void setT() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -127,9 +147,11 @@ public class BarActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
+
     /**
      * 全屏(5.0以上)
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void aTopMethod() {
         Window window = this.getWindow();
         //设置透明状态栏,这样才能让 ContentView 向上
@@ -152,6 +174,7 @@ public class BarActivity extends AppCompatActivity {
      * 着色(5.0以上)
      */
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void bTopMethod() {
         Window window = this.getWindow();
         //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
@@ -210,7 +233,7 @@ public class BarActivity extends AppCompatActivity {
         Window window = this.getWindow();
         ViewGroup mContentView = (ViewGroup) this.findViewById(Window.ID_ANDROID_CONTENT);
 
-       //First translucent status bar.
+        //First translucent status bar.
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         int statusBarHeight = getStatusBarHeight(this);
 
@@ -267,5 +290,40 @@ public class BarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    private static class MyAsyncTask extends AsyncTask<String, Integer, Boolean> {
+        private WeakReference<BarActivity> barActivityWeakReference;
+
+        public MyAsyncTask(BarActivity barActivity) {
+            barActivityWeakReference = new WeakReference<BarActivity>(barActivity);
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            if (barActivityWeakReference != null) {
+
+                if (this.isCancelled()) {
+
+                }
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+    }
 
 }
