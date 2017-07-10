@@ -1,6 +1,7 @@
 package com.example.martian.dagger;
 
 
+import com.example.martian.view.Dagger2Activity;
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -14,5 +15,5 @@ public interface AppComponent {
 
     DaggerPresenter createDaggerPresenter();
 
-//    void inject(Dagger2Activity dagger2Activity);
+    void inject(Dagger2Activity dagger2Activity);
 }

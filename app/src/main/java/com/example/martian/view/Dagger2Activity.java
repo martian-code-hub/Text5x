@@ -16,7 +16,6 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.martian.R;
-import com.example.martian.dagger.DaggerPersonComponent;
 import com.example.martian.dagger.IDaggerActivity;
 import com.example.martian.dagger.PasswordValidator;
 import com.example.martian.dagger.Person;
@@ -87,8 +86,9 @@ public class Dagger2Activity extends AppCompatActivity implements IDaggerActivit
 
   private void iniPerson() {
     //DaggerPersonComponent.create().inject(this);
-    DaggerPersonComponent.builder().build().inject(this);
-    tx.setText(person.say());
+    //DaggerPersonComponent.builder().build().inject(this);
+    //DaggerPersonComponent.builder().daggerManage(new DaggerManage(this)).build().inject(this);
+    //tx.setText(person.say());
   }
 
   private void initOkHttpClient() {

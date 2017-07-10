@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.martian">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".base.MyApplication"
@@ -15,48 +15,56 @@
             android:name=".view.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.ToolBarActivity" />
-        <activity android:name=".view.AnimationActivity" />
-        <activity android:name=".view.NotifitionActivity" />
-        <activity android:name=".view.SVGActivity" />
-        <activity android:name=".view.SurfaceViewActivity" />
-        <activity android:name=".view.ViewDragHelperActivity" />
-        <activity android:name=".view.CoordinatorLayoutActivity" />
-        <activity android:name=".view.RetrofitActivity" />
-        <activity android:name=".view.GlideActivity" />
-        <activity android:name=".view.RxJavaActivity" />
-        <activity android:name=".view.BarActivity" />
-        <activity android:name=".view.ArithmeticActivity" />
-        <activity android:name=".view.AidlActivity" />
-        <activity android:name=".view.NdkActivity" />
-        <activity android:name=".view.EventBusActivity" />
+        <activity android:name=".view.ToolBarActivity"/>
+        <activity android:name=".view.AnimationActivity"/>
+        <activity android:name=".view.NotifitionActivity"/>
+        <activity android:name=".view.SVGActivity"/>
+        <activity android:name=".view.SurfaceViewActivity"/>
+        <activity android:name=".view.ViewDragHelperActivity"/>
+        <activity android:name=".view.CoordinatorLayoutActivity"/>
+        <activity android:name=".view.RetrofitActivity"/>
+        <activity android:name=".view.GlideActivity"/>
+        <activity android:name=".view.RxJavaActivity"/>
+        <activity android:name=".view.BarActivity"/>
+        <activity android:name=".view.ArithmeticActivity"/>
+        <activity android:name=".view.AidlActivity"/>
+        <activity android:name=".view.NdkActivity"/>
+        <activity android:name=".view.EventBusActivity"/>
         <activity
             android:name=".view.MvpActivity"
-            android:windowSoftInputMode="adjustPan|stateAlwaysVisible" />
-        <activity android:name=".view.Dagger2Activity" />
-        <activity android:name=".view.VolleyActivity" />
-        <activity android:name=".view.OkHttpActivity" />
-        <activity android:name=".view.LeakCanaryActivity" />
-        <activity android:name=".view.NestRecycleViewActivity" />
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible"/>
+        <activity android:name=".view.Dagger2Activity"/>
+        <activity android:name=".view.VolleyActivity"/>
+        <activity android:name=".view.OkHttpActivity"/>
+        <activity android:name=".view.LeakCanaryActivity"/>
+        <activity android:name=".view.NestRecycleViewActivity"/>
+        <activity android:name=".view.ViewActivity"/>
+        <activity android:name=".view.RxCacheActivity"/>
+
         <!--
-     ATTENTION: This was auto-generated to add Google Play services to your project for
+         ATTENTION: This was auto-generated to add Google Play services to your project for
 
 
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
+         App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+            -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"/>
 
         <activity
             android:name=".view.MyViewGroupActivity"
             android:label="@string/title_activity_my_view_group"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".view.ARouterActivity"
+            android:label="@string/title_activity_arouter"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

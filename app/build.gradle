@@ -1,68 +1,70 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
-    defaultConfig {
-        applicationId "com.example.martian"
-        minSdkVersion 15
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-        ndk{
-            moduleName "jnitestlib"    //生成的so名字
-            abiFilters "armeabi","armeabi-v7a","x86" //输出指定三种abi体系结构下的so库。目前可有可无。
-        }
+  compileSdkVersion 25
+  buildToolsVersion '25.0.2'
+  defaultConfig {
+    applicationId "com.example.martian"
+    minSdkVersion 15
+    targetSdkVersion 22
+    versionCode 1
+    versionName "1.0"
+    ndk {
+      moduleName "jnitestlib" //生成的so名字
+      abiFilters "armeabi", "armeabi-v7a", "x86" //输出指定三种abi体系结构下的so库。目前可有可无。
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            jniDebuggable true
-        }
+    javaCompileOptions {
+      annotationProcessorOptions {
+        arguments = [ moduleName : project.getName() ]
+      }
     }
-    productFlavors {
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+    debug {
+      jniDebuggable true
+    }
+  }
+  productFlavors {
+  }
 
-    sourceSets.main {
-//        jni.srcDirs = ["jni"]
-        jniLibs.srcDir 'src/main/libs'
-    }
-}
-apt {
-    arguments {
-        moduleName project.getName();
-    }
+  sourceSets.main {
+    //        jni.srcDirs = ["jni"]
+    jniLibs.srcDir 'src/main/libs'
+  }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-v4:25.0.1'
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.orhanobut:logger:1.3'
-    compile 'io.reactivex:rxjava:1.2.2'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-    testCompile 'junit:junit:4.12'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    testCompile 'org.mockito:mockito-core:2.2.25'
-    apt 'com.google.dagger:dagger-compiler:2.2'
-    compile 'com.google.dagger:dagger:2.2'
-    provided 'javax.annotation:jsr250-api:1.0'
-    compile 'com.squareup.okio:okio:1.11.0'
-    compile 'com.squareup.okhttp3:okhttp:3.5.0'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
-    compile 'com.squareup.wire:wire-runtime:2.2.0'
-    compile 'com.android.support:cardview-v7:25.1.0'
-    compile project(':volley')
-    compile 'com.alibaba:arouter-api:1.1.0'
-    apt 'com.alibaba:arouter-compiler:1.0.4'
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile project(':volley')
+  compile 'com.android.support:support-v4:25.0.1'
+  compile 'com.android.support:appcompat-v7:25.0.1'
+  compile 'com.android.support:design:25.0.1'
+  compile 'com.squareup.retrofit2:retrofit:2.1.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+  compile 'com.orhanobut:logger:1.3'
+  compile 'io.reactivex:rxjava:1.2.2'
+  compile 'io.reactivex:rxandroid:1.2.1'
+  compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+  compile 'org.greenrobot:eventbus:3.0.0'
+  compile 'com.google.dagger:dagger:2.2'
+  compile 'com.squareup.okio:okio:1.11.0'
+  compile 'com.squareup.okhttp3:okhttp:3.5.0'
+  compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+  compile 'com.squareup.wire:wire-runtime:2.2.0'
+  compile 'com.android.support:cardview-v7:25.1.0'
+  compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.mockito:mockito-core:2.2.25'
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
+  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+  provided 'javax.annotation:jsr250-api:1.0'
+  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  annotationProcessor  'com.alibaba:arouter-compiler:1.1.1'
+  compile 'com.alibaba:arouter-api:1.1.0'
+//  compile "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x"
 }

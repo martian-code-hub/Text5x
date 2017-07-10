@@ -18,9 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.martian.R;
 import com.example.martian.adapter.HomeAdapter;
 
+import com.example.martian.base.IntentKey;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,11 +57,15 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String LEAKCANARY = "LeakCanary";
     private static final String NESTRECYCLEVIEW = "NestRecycleView";
     private static final String MYVIEWGROUP = "MyViewGroup";
+    private static final String AROUTER = "ARouter";
+    private static final String VIEW = "View";
+    private static final String RXCACHE = "RxCache";
 
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
-            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP,LEAKCANARY,NESTRECYCLEVIEW,MYVIEWGROUP};
+            RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP,LEAKCANARY,
+            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE};
     private HomeAdapter mAdapter;
 
     @Override
@@ -249,8 +255,28 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", MYVIEWGROUP);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
-
-
+            case AROUTER:
+                //intent.setClass(this,ARouterActivity.class);
+                //intent.putExtra("flag",2);
+                //intent.putExtra("title", MYVIEWGROUP);
+                //startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                Bundle params = new Bundle();
+                params.putString(IntentKey.AROUTER_BUNDLE_STRING,"跳转到ARouterActivity页面");
+                ARouter.getInstance().build(IntentKey.AROUTER_AROUTER).with(params).navigation();
+                break;
+            case VIEW:
+                //intent.setClass(this,ARouterActivity.class);
+                //intent.putExtra("flag",2);
+                //intent.putExtra("title", MYVIEWGROUP);
+                //startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                ARouter.getInstance().build(IntentKey.AROUTER_VIEW).navigation();
+                break;
+            case RXCACHE:
+                intent.setClass(this,RxCacheActivity.class);
+                intent.putExtra("flag",1);
+                intent.putExtra("title", RXCACHE);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
 
         }
     }

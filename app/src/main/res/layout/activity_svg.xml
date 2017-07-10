@@ -33,8 +33,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/myvector_one"
-        android:layout_below="@id/activity_animation_button_one"
-        android:layout_marginTop="10dp"/>
+        android:layout_alignTop="@+id/imageView" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+
 
     <ImageView
         android:id="@+id/activity_animation_iv_two"
@@ -68,6 +70,17 @@
         android:src="@drawable/shadow"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="5dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/line"
+        android:layout_marginTop="20dp"
+        android:layerType="software"
+        android:layout_marginBottom="20dp" android:id="@+id/imageView"/>
+
+
 
 </RelativeLayout>
 </ScrollView>

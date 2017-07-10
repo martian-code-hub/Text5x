@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.martian.data.RetrofitService;
+import com.example.martian.view.Dagger2Activity;
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
@@ -30,6 +31,10 @@ public class DaggerManage {
     private Context context;
     private IDaggerActivity ida;
     private int time;
+
+    public DaggerManage(Context context) {
+        this.context = context;
+    }
 
     public DaggerManage(Context context, int time) {
         this.context = context;
