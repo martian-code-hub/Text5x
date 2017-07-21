@@ -3,6 +3,7 @@
     package="com.example.martian">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <application
         android:name=".base.MyApplication"
@@ -65,6 +66,12 @@
             android:label="@string/title_activity_arouter"
             android:theme="@style/AppTheme">
         </activity>
+        <!-- 网络状态变化接收器 --> 
+        <receiver android:name="com.example.martian.receiver.NetworkStatusReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

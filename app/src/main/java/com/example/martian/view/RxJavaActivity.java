@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -157,28 +158,28 @@ public class RxJavaActivity extends AppCompatActivity {
         };
 
 
-//        Subscriber subscriber = new Subscriber() {
-//            @Override
-//            public void onSubscribe(Subscription s) {
-//                Logger.d("Subscriber--onSubscribe");
-//            }
-//
-//            @Override
-//            public void onNext(Object o) {
-//                Logger.d("Subscriber--onNext");
-//            }
-//
-//            @Override
-//            public void onError(Throwable t) {
-//                Logger.d("Subscriber--onError");
-//            }
-//
-//            @Override
-//            public void onComplete() {
-//                Logger.d("Subscriber--onComplete");
-//
-//            }
-//        };
+        //Subscriber subscriber = new Subscriber() {
+        //    @Override
+        //    public void onSubscribe(Subscription s) {
+        //        Logger.d("Subscriber--onSubscribe");
+        //    }
+        //
+        //    @Override
+        //    public void onNext(Object o) {
+        //        Logger.d("Subscriber--onNext");
+        //    }
+        //
+        //    @Override
+        //    public void onError(Throwable t) {
+        //        Logger.d("Subscriber--onError");
+        //    }
+        //
+        //    @Override
+        //    public void onComplete() {
+        //        Logger.d("Subscriber--onComplete");
+        //
+        //    }
+        //};
     }
 
     /**
