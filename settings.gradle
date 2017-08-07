@@ -1,1 +1,2 @@
-include ':app', ':javatext', ':myviewpager', ':constraintlayout', ':mynestedscrollview', ':volley'
+include ':app', ':javatext', ':myviewpager', ':constraintlayout', ':mynestedscrollview', ':volley',
+        ':rxjava2.0'

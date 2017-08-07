@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.martian.rxjava2.view.EmitterDisposableActivity">
+
+  <Button
+      android:id="@+id/ac_em_button_two"
+      android:text="click_two"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="15dp"
+      android:layout_alignParentBottom="true"
+      android:gravity="center"
+      android:padding="15dp"
+      android:layout_marginLeft="15dp"
+      android:layout_marginRight="15dp"
+      android:layout_marginStart="15dp"
+      android:layout_marginEnd="15dp"/>
+
+  <Button
+      android:id="@+id/ac_em_button_one"
+      android:text="click_one"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="10dp"
+      android:layout_marginRight="15dp"
+      android:layout_marginLeft="15dp"
+      android:layout_marginBottom="10dp"
+      android:layout_above="@id/ac_em_button_two"/>
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@id/ac_em_button_one">
+
+    <TextView
+        android:id="@+id/ac_em_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="emitter_disposable"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+  </ScrollView>
+
+  </RelativeLayout>

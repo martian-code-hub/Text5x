@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/javatext/javatext.iml" filepath="$PROJECT_DIR$/javatext/javatext.iml" />
       <module fileurl="file://$PROJECT_DIR$/mynestedscrollview/mynestedscrollview.iml" filepath="$PROJECT_DIR$/mynestedscrollview/mynestedscrollview.iml" />
       <module fileurl="file://$PROJECT_DIR$/myviewpager/myviewpager.iml" filepath="$PROJECT_DIR$/myviewpager/myviewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxjava2.0/rxjava2.0.iml" filepath="$PROJECT_DIR$/rxjava2.0/rxjava2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
     </modules>
   </component>

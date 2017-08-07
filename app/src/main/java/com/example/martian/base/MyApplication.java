@@ -30,7 +30,7 @@ public class MyApplication extends Application implements Application.ActivityLi
 
   private void init() {
     //注册Logger
-    com.orhanobut.logger.Logger.init(TAG).setMethodCount(5).setLogLevel(LogLevel.FULL);
+    //com.orhanobut.logger.Logger.init(TAG).setMethodCount(5).setLogLevel(LogLevel.FULL);
     //注册去掉强制退出时的系统弹窗
     CrashHandler crashHandler = CrashHandler.getInstance();
     crashHandler.init(getApplicationContext());

@@ -4,6 +4,7 @@ import com.example.martian.okhttp.MyInterceptors;
 import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,9 +24,12 @@ public class RetrofitManager {
 
     public static OkHttpClient getOkHttpClient(){
         if(mOkHttpClient == null) {
-            MyInterceptors logging = new MyInterceptors();
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            //MyInterceptors logging = new MyInterceptors();
 //            logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
             mOkHttpClient = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(logging)
                     .addInterceptor(logging)
                     .build();
         }
