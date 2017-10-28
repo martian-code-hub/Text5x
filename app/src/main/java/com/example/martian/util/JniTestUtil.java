@@ -6,9 +6,9 @@ package com.example.martian.util;
 
 public class JniTestUtil {
 
-    static {
-        System.loadLibrary("jnitestlib");
-    }
-
-    public static native String getNativeData();
+    //static {
+    //    System.loadLibrary("jnitestlib");
+    //}
+    //
+    //public static native String getNativeData();
 }

@@ -60,12 +60,14 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String AROUTER = "ARouter";
     private static final String VIEW = "View";
     private static final String RXCACHE = "RxCache";
+    private static final String VIDEO = "Video";
+    private static final String BOTTOMSHEET = "BottomSheet";
 
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
             RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP,LEAKCANARY,
-            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE};
+            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE,VIDEO,BOTTOMSHEET};
     private HomeAdapter mAdapter;
 
     @Override
@@ -275,6 +277,18 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.setClass(this,RxCacheActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("title", RXCACHE);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case VIDEO:
+                intent.setClass(this,VideoActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", VIDEO);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case BOTTOMSHEET:
+                intent.setClass(this,BottomSheetActivity.class);
+                intent.putExtra("flag",2);
+                intent.putExtra("title", BOTTOMSHEET);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
 

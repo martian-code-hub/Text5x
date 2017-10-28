@@ -11,8 +11,8 @@ android {
     versionCode 1
     versionName "1.0"
     ndk {
-      moduleName "jnitestlib" //生成的so名字
-      abiFilters "armeabi", "armeabi-v7a", "x86" //输出指定三种abi体系结构下的so库。目前可有可无。
+//      moduleName "jnitestlib" //生成的so名字
+//      abiFilters "armeabi", "armeabi-v7a", "x86","arm64" //输出指定三种abi体系结构下的so库。目前可有可无。
     }
     javaCompileOptions {
       annotationProcessorOptions {
@@ -33,9 +33,14 @@ android {
   }
 
   sourceSets.main {
-    //        jni.srcDirs = ["jni"]
+            jni.srcDirs = ["jni"]
     jniLibs.srcDir 'src/main/libs'
   }
+//  repositories {
+//    flatDir {
+//      dirs 'libs'
+//    }
+//  }
 }
 
 dependencies {
@@ -65,7 +70,14 @@ dependencies {
   debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
   provided 'javax.annotation:jsr250-api:1.0'
   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-  annotationProcessor  'com.alibaba:arouter-compiler:1.1.1'
-  compile 'com.alibaba:arouter-api:1.1.0'
-//  compile "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x"
+  annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+  compile 'com.alibaba:arouter-api:1.2.1.1'
+  //  compile "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x"
+
+  //  compile(name: 'AlivcPlayer', ext: 'aar')
+
+  //  compile(name: 'AliyunVodPlayer', ext: 'aar')
+
+  //  compile(name: 'AliyunVodPlayerView', ext: 'aar')
+  compile 'com.android.support:recyclerview-v7:25.0.1'
 }

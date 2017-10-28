@@ -100,9 +100,9 @@ public class NdkActivity extends AppCompatActivity {
 //                createNotifition();
 //            }
 //        });
-        JniTestUtil jtu = new JniTestUtil();
-        content = (TextView) findViewById(R.id.activity_ndk);
-        content.setText(jtu.getNativeData());
+//        JniTestUtil jtu = new JniTestUtil();
+//        content = (TextView) findViewById(R.id.activity_ndk);
+//        content.setText(jtu.getNativeData());
     }
 
     public void click(View view) {

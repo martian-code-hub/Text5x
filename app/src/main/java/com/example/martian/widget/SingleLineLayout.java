@@ -2,6 +2,7 @@ package com.example.martian.widget;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -54,6 +55,7 @@ public class SingleLineLayout extends RelativeLayout {
         rightView = (TextView) getChildAt(1);
 
         leftView.setSingleLine();
+        leftView.setEllipsize(TextUtils.TruncateAt.END);
         rightView.setSingleLine();
 
     }
@@ -120,7 +122,8 @@ public class SingleLineLayout extends RelativeLayout {
         }else{
             lp_lv.width = width-(getPaddingLeft()+getPaddingRight()+rightViewWidth+lm_lv+rm_lv+lm_rv+rm_rv);
         }
-        leftView.setLayoutParams(lp_lv);
+        leftView.setMaxWidth(lp_lv.width);
+        //leftView.setLayoutParams(lp_lv);
         super.onLayout( changed,  l,  t,  r,  b);
     }
 }
