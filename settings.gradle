@@ -1,2 +1,2 @@
 include ':app', ':javatext', ':myviewpager', ':constraintlayout', ':mynestedscrollview', ':volley',
-        ':rxjava2.0'
+        ':rxjava2.0', ':vitamio'
