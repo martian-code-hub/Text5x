@@ -62,12 +62,13 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String RXCACHE = "RxCache";
     private static final String VIDEO = "Video";
     private static final String BOTTOMSHEET = "BottomSheet";
+    private static final String IDRECOGNITION = "IDRecognition";
 
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
             RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP,LEAKCANARY,
-            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE,VIDEO,BOTTOMSHEET};
+            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE,VIDEO,BOTTOMSHEET,IDRECOGNITION};
     private HomeAdapter mAdapter;
 
     @Override
@@ -291,7 +292,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", BOTTOMSHEET);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
-
+            case IDRECOGNITION:
+                intent.setClass(this,IDRecognitionActivity.class);
+                intent.putExtra("flag",0);
+                intent.putExtra("title", IDRECOGNITION);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
         }
     }
 
