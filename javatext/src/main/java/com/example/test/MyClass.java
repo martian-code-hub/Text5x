@@ -1,7 +1,5 @@
 package com.example.test;
 
-import java.util.Date;
-
 public class MyClass {
   public static int[] dataNew = {07, 13, 20, 45, 55, 88};
 

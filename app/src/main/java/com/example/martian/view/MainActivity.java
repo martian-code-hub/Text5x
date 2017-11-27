@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
     private static final String VIDEO = "Video";
     private static final String BOTTOMSHEET = "BottomSheet";
     private static final String IDRECOGNITION = "IDRecognition";
-
+    private static final String DEX = "Dex";
 
     private List<String> mDatas;
     private String[] data = {TOOLBAR,ANIMATION,NOTIFICATION,SVG,SURFACEVIEW,VIEWDRAGHELPER,COORDINATORLAYOUT,
             RETROFIT,GLIDE,RXJAVA,BAR,ARITHMETIC,AIDL,NDK,EVENTBUS,MVP,DAGGER2,VOLLEY,OKHTTP,LEAKCANARY,
-            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE,VIDEO,BOTTOMSHEET,IDRECOGNITION};
+            NESTRECYCLEVIEW,MYVIEWGROUP,AROUTER,VIEW,RXCACHE,VIDEO,BOTTOMSHEET,IDRECOGNITION,DEX};
     private HomeAdapter mAdapter;
 
     @Override
@@ -303,6 +303,14 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
                 intent.putExtra("title", IDRECOGNITION);
                 startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
                 break;
+            case DEX:
+                intent.setClass(this,DexActivity.class);
+                intent.putExtra("flag",1);
+                intent.putExtra("title", DEX);
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+                break;
+
+
         }
     }
 

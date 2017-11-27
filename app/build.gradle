@@ -17,6 +17,7 @@ android {
     javaCompileOptions {
       annotationProcessorOptions {
         arguments = [ moduleName : project.getName() ]
+        includeCompileClasspath = true
       }
     }
     vectorDrawables.useSupportLibrary = true
@@ -42,6 +43,9 @@ android {
 //      dirs 'libs'
 //    }
 //  }
+  lintOptions {
+    abortOnError false
+  }
 }
 
 dependencies {
@@ -74,7 +78,7 @@ dependencies {
   //  compile(name: 'AlivcPlayer', ext: 'aar')
   //  compile(name: 'AliyunVodPlayer', ext: 'aar')
   //  compile(name: 'AliyunVodPlayerView', ext: 'aar')
-  compile 'com.android.support:recyclerview-v7:25.0.1'
+  compile 'com.android.support:recyclerview-v7:26.0.2'
   compile project(':vitamio')
   compile 'com.jakewharton:butterknife:7.0.1'
   compile 'com.zhihu.android:matisse:0.4.3'
@@ -86,3 +90,43 @@ dependencies {
   compile 'com.android.support:design:26.0.2'
   compile 'com.android.support:cardview-v7:26.0.2'
 }
+
+////删除dynamic.jar包任务
+//task clearJar(type: Delete) {
+//  delete 'libs/dynamic.jar'
+//}
+//
+////Copy类型
+//task makeJar(type:Jar) {
+//  //删除存在的
+//  archiveName = 'dynamic.jar'
+//  //设置拷贝的文件
+//  from ('build/intermediates/classes/debug/com/example/martian/dex/impl/')
+//  //打包到jar后的目录结构
+//  into('com/example/martian/dex/impl/')
+//  //打进jar包后的文件目录
+//  destinationDir = file('build/libs')
+//  //将classes.jar放入build/libs/目录下
+////  exclude( 'IShowToast.class')
+////  //去掉R$开头的文件
+////  exclude{ it.name.startsWith('R$');}
+//}
+////makeJar.dependsOn(build)
+//makeJar.dependsOn(clearJar, build)
+
+//在终端执行生成JAR包
+//task buildMyJar(type: Jar, dependsOn: ['build']) {
+//  //导出的jar文件名称
+//  archiveName = 'TestApp.jar'
+//  //从哪个目录打包jar
+//  from('build/intermediates/classes/debug')
+//  //导出的jar文件的存放目录（未指定则默认存放在build/libs下）
+//  destinationDir = file('build/libs')
+//  //去掉不要的类
+//  exclude('com/example/testapp/BuildConfig.class')
+//  exclude('com/example/testapp/BuildConfig\$*.class')
+//  exclude('**/R.class')
+//  exclude('**/R\$*.class')
+//  //需要打包的类
+//  include('com/example/testapp/*.class')
+//}

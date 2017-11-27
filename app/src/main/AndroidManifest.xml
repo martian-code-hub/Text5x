@@ -53,7 +53,7 @@
     <activity android:name=".view.ViewActivity"/>
     <activity android:name=".view.RxCacheActivity"/>
     <activity android:name=".view.IDRecognitionActivity"/>
-
+    <activity android:name=".view.DexActivity"/>
 
     <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
