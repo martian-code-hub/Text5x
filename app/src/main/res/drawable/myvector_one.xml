@@ -9,7 +9,7 @@
         android:name="myvector"
         android:rotation="0">
         <path
-            android:strokeColor="@android:color/holo_blue_bright"
+            android:strokeColor="@color/colorPrimary"
             android:strokeWidth="2"
             android:pathData="M 25 50 A 25 25 0 1 1 75 75"></path>
     </group>

@@ -1,14 +1,10 @@
 package com.example.martian.retrofit;
 
+import com.example.martian.bean.IDRecognitionTecentModel;
 import com.example.martian.bean.NewsList;
 import com.example.martian.bean.Person;
-import com.example.martian.mvp.User;
-
-import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -22,7 +18,6 @@ import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
@@ -131,4 +126,12 @@ public interface RetrofitService {
     Call<Person> getPersonFromUrl(@Url String url);
 
 
+
+
+
+    //-----------------------------------------------
+    //@Multipart  @Part  @FieldMap
+    @Multipart
+    @POST("ocr/idcard")
+    Call<IDRecognitionTecentModel>  idRecognition(@HeaderMap Map<String, String> headers,@FieldMap Map<String,String> options, @PartMap Map<String ,RequestBody> requestBodys);
 }

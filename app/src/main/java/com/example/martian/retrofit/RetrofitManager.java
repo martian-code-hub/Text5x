@@ -1,11 +1,10 @@
 package com.example.martian.retrofit;
 
-import com.example.martian.okhttp.MyInterceptors;
 import com.google.gson.Gson;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -21,6 +20,8 @@ public class RetrofitManager {
     private static OkHttpClient mOkHttpClient;
 
     private static final String BASEURL = "http://news-at.zhihu.com/api/4/";
+
+    public static final String BASEURL_OCR_TECENT = "http://service.image.myqcloud.com/";
 
     public static OkHttpClient getOkHttpClient(){
         if(mOkHttpClient == null) {
@@ -41,7 +42,7 @@ public class RetrofitManager {
             mRetrofit = new Retrofit.Builder()
                     .baseUrl(BASEURL)
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
-//                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(getOkHttpClient())
                     .build();
 

@@ -17,11 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.martian.R;
 import com.example.martian.adapter.HomeAdapter;
-
 import com.example.martian.base.IntentKey;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -116,6 +114,13 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.OnIte
 //            mDatas.add("" + (char) i);
 //        }
         mAdapter.notifyDataSetChanged();
+
+        //try {
+        //    String sign = SignUtil.appSign(1254409326,"AKID7UtGADb754579Ar1eIycH2mEf4Ql7jS8","ybilYHzoVErT2Z3SyT8k8KcdgghgfgHz","ocr",SignUtil.expired);
+        //    Log.d("---","sign:"+sign);
+        //} catch (Exception e) {
+        //    e.printStackTrace();
+        //}
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

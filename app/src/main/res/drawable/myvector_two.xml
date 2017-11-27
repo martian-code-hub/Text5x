@@ -9,14 +9,14 @@
 
         <path
             android:name="path1"
-            android:strokeColor="@android:color/holo_blue_bright"
+            android:strokeColor="@color/colorPrimary"
             android:strokeWidth="5"
             android:strokeLineCap="round"
             android:pathData="M 20 20 L 50,20 80,20"></path>
 
         <path
             android:name="path2"
-            android:strokeColor="@android:color/holo_blue_bright"
+            android:strokeColor="@color/colorPrimary"
             android:strokeWidth="5"
             android:strokeLineCap="round"
             android:pathData="M 20 80 L 50,80 80,80"></path>

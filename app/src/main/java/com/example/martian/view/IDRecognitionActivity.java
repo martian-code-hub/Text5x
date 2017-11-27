@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -32,9 +33,12 @@ import com.alibaba.cloudapi.sdk.model.ApiResponse;
 import com.bumptech.glide.Glide;
 import com.example.martian.R;
 import com.example.martian.alicloudapi.Demo_数据服务_5_1_身份证识别;
+import com.example.martian.bean.IDRecognitionTecentModel;
 import com.example.martian.bean.RequestParams;
+import com.example.martian.retrofit.RetrofitManager;
 import com.example.martian.util.DateUtil;
 import com.example.martian.util.PathUtil;
+import com.example.martian.util.SignUtil;
 import com.google.gson.Gson;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
@@ -44,8 +48,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import android.util.Base64;
+import java.util.Map;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
 
@@ -123,7 +133,8 @@ public class IDRecognitionActivity extends AppCompatActivity {
         break;
       case R.id.tv_submit:
         if (checkData()) {
-          requestIDRecognition(imagePahts);
+          //requestIDRecognitionByAli(imagePahts);
+           requestIDRecognitionByTecent(imagePahts);
         }
         break;
     }
@@ -220,7 +231,11 @@ public class IDRecognitionActivity extends AppCompatActivity {
     }
   }
 
-  private void requestIDRecognition(List<String> imagePahts) {
+  /**
+   * 通过阿里云身份证识别
+   * @param imagePahts
+   */
+  private void requestIDRecognitionByAli(List<String> imagePahts) {
     if (imagePahts != null && imagePahts.size() > 0) {
       List<RequestParams.InputsBean> list = new ArrayList<>();
       RequestParams params = new RequestParams();
@@ -295,6 +310,45 @@ public class IDRecognitionActivity extends AppCompatActivity {
     return imgBase64;
   }
 
+  /**
+   * 通过腾讯云身份证识别
+   * @param imagePahts
+   */
+  private void requestIDRecognitionByTecent(List<String> imagePahts) {
+    Map<String, String> headers = new HashMap<>();
+    headers.put("Host","service.image.myqcloud.com");
+    //headers.put("Content-Length","");
+    headers.put("Content-Type","multipart/form-data");
+    headers.put("Authorization", SignUtil.sign);
+
+    Map<String,String> options = new HashMap<>();
+    options.put("appid","1254409326");
+    options.put("bucket","ocr");
+    options.put("card_type",cbFace.isChecked()?"0":"1");
+
+    Map<String, RequestBody> bodyMap = new HashMap<>();
+    for (int i = 0,size = imagePahts.size(); i <size ; i++) {
+      File file = new File(imagePahts.get(i));
+      bodyMap.put("image["+i+"];filename="+file.getName(),RequestBody.create(MediaType.parse("image/jpeg"),file));
+    }
+    Call<IDRecognitionTecentModel> repos =  RetrofitManager.getService().idRecognition(headers,options,bodyMap);
+    repos.enqueue(new Callback<IDRecognitionTecentModel>() {
+      @Override public void onResponse(Call<IDRecognitionTecentModel> call, Response<IDRecognitionTecentModel> response) {
+        Message msg = handler.obtainMessage();
+        msg.what = 1;
+        msg.obj = response.body().toString();
+        handler.sendMessage(msg);
+      }
+
+      @Override public void onFailure(Call<IDRecognitionTecentModel> call, Throwable t) {
+        Message msg = handler.obtainMessage();
+        msg.what = 2;
+        msg.obj = t.toString();
+        handler.sendMessage(msg);
+      }
+    });
+
+  }
   private void showUserInfo(String content){
     Log.d("---","content:"+content);
     Toast.makeText(IDRecognitionActivity.this, "获取成功", Toast.LENGTH_SHORT).show();
