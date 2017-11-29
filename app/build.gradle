@@ -89,7 +89,12 @@ dependencies {
   compile 'com.android.support:appcompat-v7:26.0.2'
   compile 'com.android.support:design:26.0.2'
   compile 'com.android.support:cardview-v7:26.0.2'
+
+  // 若使用annotation需要单独引用,对于tinker的其他库都无需再引用
+  provided("com.tinkerpatch.tinker:tinker-android-anno:1.9.1")
+  compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.1")
 }
+apply from: 'tinkerpatch.gradle'
 
 ////删除dynamic.jar包任务
 //task clearJar(type: Delete) {
