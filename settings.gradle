@@ -1,2 +1,2 @@
-include ':app', ':javatext', ':myviewpager', ':constraintlayout', ':mynestedscrollview', ':volley',
+include ':app', ':javatext', ':myviewpager', ':constraintlayout', ':mynestedscrollview', ':volley', ':kotlin',
         ':rxjava2.0', ':vitamio'

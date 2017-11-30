@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
+    ext.kotlin_version = '1.2.0'
     repositories {
         jcenter()
       google()
@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:1.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -24,4 +25,23 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    configuration = [
+//            package                : "com.forthgoer.safelycity.citizen",
+//            buildToolsVersion      : "26.0.1",
+//            compileVersion         : 25,
+//            minSdk                 : 19,
+//            targetSdk              : 22,
+//            version_code           : 102,
+//            version_name           : "1.0.2",
+//            javaSourceCompatibility: JavaVersion.VERSION_1_7,
+//            javaTargetCompatibility: JavaVersion.VERSION_1_7,
+    ]
+
+    // Libraries
+    libraries = [
+//            kotlin_version = '1.2.0'
+    ]
+
 }
