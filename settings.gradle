@@ -1,3 +1,2 @@
-include ':jetpack_behavior'
 include ':app', ':javatext', ':myviewpager', ':constraintlayout', ':mynestedscrollview', ':kotlin',
-        ':rxjava2.0', ':vitamio', ':volley'
+        ':rxjava2.0', ':vitamio', ':jetpack_behavior'
